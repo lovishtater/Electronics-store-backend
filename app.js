@@ -15,6 +15,7 @@ const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
 const paymentBRoutes = require("./routes/paymentBRoutes");
 
+
 //DB Connection
 mongoose
   .connect(process.env.DATABASE, {
@@ -32,6 +33,7 @@ app.use(cookieParser());
 app.use(cors());
 
 //My Routes
+app.get('/',( req , res)=> {res.send("success")});
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
