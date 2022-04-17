@@ -183,3 +183,20 @@ exports.updateStock = (req, res, next) => {
     next();
   });
 };
+
+exports.getBestSellers = (req, res) => {
+  Product.find()
+    .sort({ sold: -1 })
+    .limit(3)
+    .exec((err, products) => {
+      if (err) {
+        return res.status(400).json({
+          error: "NO product FOUND"
+        });
+      }
+      res.json(products);
+    }
+    );
+}
+
+

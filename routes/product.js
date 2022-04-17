@@ -9,6 +9,7 @@ const {
   updateProduct,
   deleteProduct,
   getAllProducts,
+  getBestSellers,
   getAllUniqueCategories
 } = require("../controllers/product");
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth");
@@ -31,6 +32,7 @@ router.post(
 // read routes
 router.get("/product/:productId", getProduct);
 router.get("/product/photo/:productId", photo);
+router.get("/products/bestSellers", getBestSellers);
 
 //delete route
 router.delete(

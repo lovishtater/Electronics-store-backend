@@ -15,6 +15,12 @@ const productSchema = new mongoose.Schema(
       required: true,
       maxlength: 2000
     },
+    brand: {
+      type: String,
+      trim: true,
+      required: true,
+      maxlength: 320
+    },
     price: {
       type: Number,
       required: true,
@@ -25,6 +31,10 @@ const productSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "Category",
       required: true
+    },
+    rating: {
+      type: Number,
+      default: 0
     },
     stock: {
       type: Number
