@@ -18,7 +18,6 @@ const productSchema = new mongoose.Schema(
     brand: {
       type: String,
       trim: true,
-      required: true,
       maxlength: 320
     },
     price: {

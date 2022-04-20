@@ -10,6 +10,7 @@ const {
   deleteProduct,
   getAllProducts,
   getBestSellers,
+  searchProducts,
   getAllUniqueCategories
 } = require("../controllers/product");
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth");
@@ -33,6 +34,7 @@ router.post(
 router.get("/product/:productId", getProduct);
 router.get("/product/photo/:productId", photo);
 router.get("/products/bestSellers", getBestSellers);
+router.post("/products/search", searchProducts);
 
 //delete route
 router.delete(

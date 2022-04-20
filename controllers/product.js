@@ -133,7 +133,6 @@ exports.updateProduct = (req, res) => {
 };
 
 //product listing
-
 exports.getAllProducts = (req, res) => {
   let limit = req.query.limit ? parseInt(req.query.limit) : 8;
   let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
@@ -199,4 +198,41 @@ exports.getBestSellers = (req, res) => {
     );
 }
 
+exports.searchProducts = (req, res) => {
+  let limit = req.body.limit ? parseInt(req.body.limit) : 10;
+  let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+  let search = new RegExp(req.body.search, "i");
+  Product.find({ $or : [{name: search}, {description: search}]})
+    .select("-photo")
+    .populate("category")
+    .sort([[sortBy, "asc"]])
+    .limit(limit)
+    .exec((err, products) => {
+      console.log(err);
+      if (err) {
+        return res.status(400).json({
+          error: "NO product FOUND",
+        });
+      }
+      res.json(products);
+    });
+}
+
+exports.searchSuggestions = (req, res) => {
+  let search = new RegExp(req.body.search, "i");
+  Product.find({ name: search })
+    .select("name")
+    .limit(5)
+    .exec((err, products) => {
+      if (err) {
+        return res.status(400).json({
+          error: "NO product FOUND"
+        });
+      }
+      res.json(products);
+    }
+    );
+}
+
+ 
 
