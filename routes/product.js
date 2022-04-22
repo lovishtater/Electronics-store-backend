@@ -34,7 +34,7 @@ router.post(
 router.get("/product/:productId", getProduct);
 router.get("/product/photo/:productId", photo);
 router.get("/products/bestSellers", getBestSellers);
-// router.post("/products/search", searchProducts);
+router.post("/products/search", searchProducts);
 
 //delete route
 router.delete(
