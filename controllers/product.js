@@ -54,7 +54,7 @@ exports.createProduct = (req, res) => {
       if (err) {
         res.status(400).json({
           error: "Saving Product in DB failed",
-          message: err
+          message: err.message,
         });
       }
       res.status(200).json(product);
@@ -146,7 +146,7 @@ exports.getAllProducts = (req, res) => {
       if (err) {
         return res.status(400).json({
           error: "NO product FOUND",
-          message: err
+          message: err.message,
         });
       }
       res.json(products);
@@ -158,7 +158,7 @@ exports.getAllUniqueCategories = (req, res) => {
     if (err) {
       return res.status(400).json({
         error: "NO category found",
-        message: err
+        memessage: err.message,
       });
     }
     res.json(category);
@@ -193,7 +193,7 @@ exports.getBestSellers = (req, res) => {
       if (err) {
         return res.status(400).json({
           error: "NO product FOUND",
-          message: err
+          message: err.message,
         });
       }
       res.json(products);
@@ -215,7 +215,7 @@ exports.searchProducts = (req, res) => {
       if (err) {
         return res.status(400).json({
           error: "NO product FOUND",
-          message: err
+          message: err.message,
         });
       }
       res.json(products);
@@ -231,7 +231,7 @@ exports.searchSuggestions = (req, res) => {
       if (err) {
         return res.status(400).json({
           error: "NO product FOUND",
-          message: err
+          message: err.message,
         });
       }
       res.json(products);
