@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(cors());
 
 //My Routes
-app.get('/',( req , res)=> {res.send("success")});
+app.get('/',( req , res)=> {res.send("Welcome to the Vijay Electronics's Backend Server")})
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
